@@ -26,7 +26,7 @@
     "src",
     ".commitlintrc.ts",
     "vite.config.ts",
-    "eslintrc.cjs"
+    "eslintrc.cjs",
   ],
   "references": [
     {
