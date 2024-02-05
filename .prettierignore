@@ -1,0 +1,4 @@
+node_modules
+# Ignore artifacts of the build process:
+dist
+coverage
