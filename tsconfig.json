@@ -28,9 +28,10 @@
     "vite.config.ts",
     "eslintrc.cjs",
   ],
+  "extends": "./tsconfig.paths.json",
   "references": [
     {
       "path": "./tsconfig.node.json"
-    }
+    },
   ]
 }
