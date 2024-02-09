@@ -26,11 +26,12 @@
     "src",
     ".commitlintrc.ts",
     "vite.config.ts",
-    "eslintrc.cjs"
+    "eslintrc.cjs",
   ],
+  "extends": "./tsconfig.paths.json",
   "references": [
     {
       "path": "./tsconfig.node.json"
-    }
+    },
   ]
 }
