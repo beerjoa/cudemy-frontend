@@ -25,6 +25,7 @@ const DUMMY_DISCOUNTS = [
     countryCode: 'KR',
   },
 ];
+
 const DiscountsList: React.FC<DiscountsListProps> = () => {
   return (
     <div className="flex flex-wrap justify-center gap-4">

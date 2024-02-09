@@ -15,7 +15,7 @@ const Navigation: React.FC<NavigationProps> = () => {
         </a>
         <div className="flex space-x-8">
           <Button className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
-            Discount Status
+            Discounts
           </Button>
           <DarkModeSwitcher />
         </div>
