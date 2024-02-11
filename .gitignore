@@ -234,4 +234,10 @@ dist-ssr
 *.sln
 *.sw?
 
+**/*Old.tsx
+
+.env.*
+.env
+!.env.example
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,linux,macos,visualstudiocode,jetbrains
