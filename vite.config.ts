@@ -10,8 +10,13 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@components': '/src/components',
-      '@hooks': '/src/hooks',
+      '#components': '/src/components',
+      '#hooks': '/src/hooks',
+      '#store': '/src/store',
+      '#api': '/src/api',
+      '#utils': '/src/utils',
+      '#types': '/src/types',
+      '#assets': '/src/assets',
     },
   },
   test: {
