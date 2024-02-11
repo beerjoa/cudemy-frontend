@@ -1,12 +1,18 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import store from '#store/index';
 
 import App from './App';
 
 describe('App', () => {
   it('renders learn react link', () => {
     // Arrange
-    render(<App />);
+    render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+    );
     // Act
 
     // Expect
