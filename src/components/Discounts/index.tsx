@@ -1,8 +1,8 @@
-import DiscountsList from '@components/Discounts/DiscountsList';
+import DiscountsList from '#components/Discounts/DiscountsList';
 
-type DiscountProps = any;
+type DiscountsProps = any;
 
-const Discounts: React.FC<DiscountProps> = () => {
+const Discounts: React.FC<DiscountsProps> = () => {
   return (
     <>
       <div className="flex flex-col items-center justify-center w-full">

@@ -1,4 +1,4 @@
-import Discounts from '@components/Discounts';
+import Discounts from '#components/Discounts';
 
 type HomeProps = any;
 
