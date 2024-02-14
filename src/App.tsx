@@ -1,12 +1,14 @@
 import Navigation from './components/UI/Navigation';
 import Home from './components/Home';
+import Footer from '#components/UI/Footer';
 
 function App() {
   return (
     <>
-      <div className="min-h-screen flex flex-col bg-gray-200 dark:bg-gray-800 p-4 transition duration-200">
+      <div className="flex flex-col p-4 max-md:p-2 min-h-lvh">
         <Navigation />
         <Home />
+        <Footer />
       </div>
     </>
   );

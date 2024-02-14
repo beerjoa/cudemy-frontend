@@ -1,40 +1,40 @@
-import { useState } from 'react';
+import Button, { ButtonProps } from '#components/UI/Button';
+import Twemoji from '#components/UI/Twemoji';
+import useDarkMode from '#hooks/useDarkMode';
 
-import useDarkMode from '../hooks/useDarkMode';
-
-type DarkModeSwitcherProps = any;
+type DarkModeSwitcherProps = ButtonProps;
 
 const DarkModeSwitcher: React.FC<DarkModeSwitcherProps> = () => {
-  const [colorTheme, setTheme] = useDarkMode();
-  const [darkSide, setDarkSide] = useState(
-    colorTheme === 'light' ? true : false,
-  );
+  const [theme, setTheme] = useDarkMode();
 
-  const toggleDarkMode: (checked: boolean) => void = (checked) => {
-    setTheme(colorTheme);
-    setDarkSide(checked);
+  const handleThemeChange = (event: any) => {
+    if (event.target.checked) {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
   };
 
   return (
-    <button
-      className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
-      onClick={() => toggleDarkMode(!darkSide)}
-    >
-      <svg
-        className="h-6 w-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
+    <Button className="btn btn-square btn-ghost btn-md max-md:btn-sm mr-2">
+      <label className="swap swap-rotate">
+        <input
+          type="checkbox"
+          onChange={handleThemeChange}
+          checked={theme === 'light' ? false : true}
         />
-      </svg>
-    </button>
+        <Twemoji
+          className="swap-on fill-current"
+          emojiClassName="w-6 h-6 md:w-10 md:h-10"
+          emoji="🌞"
+        />
+        <Twemoji
+          className="swap-off fill-current"
+          emojiClassName="w-6 h-6 md:w-10 md:h-10"
+          emoji="🌜"
+        />
+      </label>
+    </Button>
   );
 };
 

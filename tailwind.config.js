@@ -1,7 +1,9 @@
+/*eslint-env node*/
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  darkMode: 'class',
+  darkMode: ['class', '[data-theme="dark"]'],
+  plugins: [require('daisyui')],
   theme: {
     extend: {},
     screens: {
@@ -11,5 +13,10 @@ export default {
       xl: '1280px',
     },
   },
-  plugins: [],
+  daisyui: {
+    themes: ['dark', 'light'],
+    darkTheme: 'dark',
+    styled: true,
+    utils: true,
+  },
 };
