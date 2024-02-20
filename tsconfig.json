@@ -28,6 +28,10 @@
     "vite.config.ts",
     "eslintrc.cjs",
   ],
+  "exclude": [
+    "node_modules",
+    "**/*Old.tsx",
+  ],
   "extends": "./tsconfig.paths.json",
   "references": [
     {
