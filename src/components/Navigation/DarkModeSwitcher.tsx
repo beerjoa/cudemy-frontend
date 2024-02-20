@@ -1,8 +1,9 @@
-import Button, { ButtonProps } from '#components/UI/Button.tsx';
+import Button from '#components/UI/Button.tsx';
 import Twemoji from '#components/UI/Twemoji.tsx';
 import useDarkMode from '#hooks/useDarkMode.ts';
 
-type DarkModeSwitcherProps = ButtonProps;
+interface DarkModeSwitcherProps
+  extends React.ComponentPropsWithoutRef<typeof Button> {}
 
 const DarkModeSwitcher: React.FC<DarkModeSwitcherProps> = () => {
   const [theme, setTheme] = useDarkMode();
@@ -25,12 +26,12 @@ const DarkModeSwitcher: React.FC<DarkModeSwitcherProps> = () => {
         />
         <Twemoji
           className="swap-on fill-current"
-          emojiClassName="w-6 h-6 md:w-12 md:h-12"
+          emojiClassName="w-8 h-8 md:w-12 md:h-12"
           emoji="🌞"
         />
         <Twemoji
           className="swap-off fill-current"
-          emojiClassName="w-6 h-6 md:w-12 md:h-12"
+          emojiClassName="w-8 h-8 md:w-12 md:h-12"
           emoji="🌜"
         />
       </label>

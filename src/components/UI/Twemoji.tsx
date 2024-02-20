@@ -1,11 +1,11 @@
 import { memo } from 'react';
 import twemoji from 'twemoji';
 
-type TwemojiProps = {
+interface TwemojiProps extends React.ComponentPropsWithoutRef<'span'> {
   className?: string;
   emoji: string;
   emojiClassName?: string;
-};
+}
 
 const Twemoji: React.FC<TwemojiProps> = memo(
   ({

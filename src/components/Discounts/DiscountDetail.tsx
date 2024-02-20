@@ -8,9 +8,10 @@ import { AppDispatch, RootState } from '#store/index.ts';
 import { modalUIActions } from '#store/modal-ui-slice.ts';
 import { TDetailDiscountInfo } from '#types/Discount.ts';
 import { EModalUIType } from '#types/UI.ts';
-import { getAgoTime } from '#utils/formatting.ts';
+import { formatDateTime, getAgoTime } from '#utils/formatting.ts';
 
-type DiscountDetailProps = unknown;
+interface DiscountDetailProps
+  extends React.ComponentPropsWithoutRef<'dialog'> {}
 
 const DiscountDetail: React.FC<DiscountDetailProps> = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -27,28 +28,25 @@ const DiscountDetail: React.FC<DiscountDetailProps> = () => {
   let descriptionContent = '';
   let subDescriptionContent = '';
 
-  const startedAt = DateTime.fromISO(
-    detailDiscountInfo.startedAt,
-  ).toLocaleString(DateTime.DATETIME_SHORT);
+  const formattedStartedAt = formatDateTime(
+    detailDiscountInfo.startedAt || DateTime.now().toISO(),
+    DateTime.DATETIME_SHORT,
+  );
 
   if (detailDiscountInfo.discountStatus) {
     titleContent = `On discount now! 🥳`;
-    const startedAt = detailDiscountInfo.startedAt || DateTime.now().toISO();
-    const formattedDateTime = DateTime.fromISO(startedAt).toLocaleString(
-      DateTime.DATETIME_SHORT,
-    );
-
-    subDescriptionContent = `${formattedDateTime} ~ now`;
+    subDescriptionContent = `${formattedStartedAt} ~ now`;
     descriptionContent = `Last checked ${getAgoTime(detailDiscountInfo.updatedAt)}`;
   } else {
     const dateDiffStr = getAgoTime(detailDiscountInfo.endedAt);
 
-    const endedAt = DateTime.fromISO(detailDiscountInfo.endedAt).toLocaleString(
+    const formattedEndedAt = formatDateTime(
+      detailDiscountInfo.endedAt || DateTime.now().toISO(),
       DateTime.DATETIME_SHORT,
     );
 
     descriptionContent = `Last discount was ${dateDiffStr}`;
-    subDescriptionContent = `${startedAt} ~ ${endedAt}`;
+    subDescriptionContent = `${formattedStartedAt} ~ ${formattedEndedAt}`;
   }
 
   const handleModalClose = () => {
@@ -63,14 +61,14 @@ const DiscountDetail: React.FC<DiscountDetailProps> = () => {
       <div className="modal-box max-w-lg max-md:max-w-sm bg-base outline outline-1 outline-base-content/10 md:p-10">
         <div className="rounded-lg w-full">
           <div className="flex justify-between items-center border-b border-base-content/10">
-            <h2 className="text-xl md:text-3xl font-bold line-clamp-1 mb-3 md:mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold line-clamp-1 mb-3 md:mb-5">
               <Twemoji
                 emoji={titleContent}
                 emojiClassName="md:size-8 md:align-[-2px] size-5 align-[-1px]"
               />
             </h2>
             <form method="dialog">
-              <button className="btn md:btn-md btn-sm btn-circle btn-ghost text-xl absolute right-4 top-4">
+              <button className="btn md:btn-lg btn-md btn-circle btn-ghost md:text-2xl text-lg absolute md:right-3 md:top-3 right-1 top-1 focus:outline-none focus:shadow-none">
                 ✕
               </button>
             </form>
@@ -83,7 +81,7 @@ const DiscountDetail: React.FC<DiscountDetailProps> = () => {
                 <p className="font-semibold text-md md:text-2xl">
                   {descriptionContent}
                 </p>
-                <p className="text-[0.7em] md:text-lg text-gray-500">
+                <p className="text-[0.8em] md:text-lg text-gray-500">
                   {subDescriptionContent}
                 </p>
               </div>
@@ -95,6 +93,7 @@ const DiscountDetail: React.FC<DiscountDetailProps> = () => {
           <form method="dialog" className="w-full">
             <Button className="btn btn-primary w-full btn-md md:btn-lg md:text-xl text-md md:h-[3.25rem] md:min-h-[3.25rem] h-[2.5rem] min-h-[2.5rem] mb-0.5 md:mb-1 rounded-lg">
               <a
+                className="w-full h-full flex items-center justify-center"
                 href={'https://www.udemy.com'}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -102,7 +101,7 @@ const DiscountDetail: React.FC<DiscountDetailProps> = () => {
                 Go to Udemy
               </a>
             </Button>
-            <p className="text-[0.7em] md:text-[1.05em] text-gray-500 text-center">
+            <p className="text-[0.8em] md:text-[1.05em] text-gray-500 text-center">
               Udemy regions would be based on your location.
             </p>
           </form>

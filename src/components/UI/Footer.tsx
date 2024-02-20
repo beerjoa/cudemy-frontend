@@ -1,4 +1,4 @@
-type FooterProps = React.HTMLAttributes<HTMLElement>;
+interface FooterProps extends React.ComponentPropsWithoutRef<'footer'> {}
 
 const Footer: React.FC<FooterProps> = () => {
   return (

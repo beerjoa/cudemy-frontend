@@ -3,12 +3,12 @@ import { createPortal } from 'react-dom';
 
 const portalElement = document.getElementById('modal-root');
 
-type ModalProps = React.DialogHTMLAttributes<HTMLDialogElement> & {
+interface ModalProps extends React.ComponentPropsWithoutRef<'dialog'> {
   children: React.ReactNode;
   className?: string;
   open: boolean;
   onClose: () => void;
-};
+}
 
 const Modal: React.FC<ModalProps> = ({ open, onClose, children }) => {
   const dialog = useRef<HTMLDialogElement | null>(null);

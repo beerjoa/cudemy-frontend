@@ -1,6 +1,6 @@
 import Discounts from '#components/Discounts';
 
-type HomeProps = any;
+interface HomeProps extends React.ComponentPropsWithoutRef<'div'> {}
 
 const Home: React.FC<HomeProps> = () => {
   return (

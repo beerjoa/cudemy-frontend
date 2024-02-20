@@ -11,7 +11,7 @@ import { RootState } from '#store/index.ts';
 import { TDetailDiscountInfo } from '#types/Discount.ts';
 import { EModalUIType } from '#types/UI.ts';
 
-type DiscountsListProps = any;
+interface DiscountsListProps extends React.ComponentPropsWithoutRef<'div'> {}
 
 const DiscountsList: React.FC<DiscountsListProps> = () => {
   const dispatch = useDispatch<AppDispatch>();

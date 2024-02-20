@@ -62,13 +62,17 @@ export const formatDateTime = (
     return '-';
   }
 
-  const formattedDate = DateTime.fromISO(date).toLocaleString(format);
+  const formattedDate = DateTime.fromISO(date).toLocaleString(format, {
+    locale: 'en-US',
+  });
 
   return formattedDate;
 };
 
 export const getAgoTime = (date: string) => {
-  const endedAt = DateTime.fromISO(date);
+  const endedAt = DateTime.fromISO(date, {
+    locale: 'en-US',
+  });
 
   return endedAt.toRelative();
 };

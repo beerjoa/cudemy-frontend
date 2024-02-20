@@ -3,7 +3,7 @@ import Twemoji from '#components/UI/Twemoji';
 import DiscountDetail from './DiscountDetail.tsx';
 import DiscountsList from './DiscountsList.tsx';
 
-type DiscountsProps = any;
+interface DiscountsProps extends React.ComponentPropsWithoutRef<'div'> {}
 
 const Discounts: React.FC<DiscountsProps> = () => {
   return (

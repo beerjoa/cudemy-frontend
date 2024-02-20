@@ -1,15 +1,15 @@
 import Button from '#components/UI/Button.tsx';
 import Ping from '#components/UI/Ping.tsx';
 import Twemoji from '#components/UI/Twemoji.tsx';
-
-type CardProps = {
+interface CardProps extends React.ComponentPropsWithoutRef<typeof Button> {
+type CardProps = React.HTMLAttributes<HTMLDivElement> & {
   title: string;
   description: string;
   updatedAt: string;
   color: 'gray' | 'green' | 'red';
   buttonLabel?: string;
   onClick?: () => void;
-};
+}
 
 const Card: React.FC<CardProps> = ({
   title,

@@ -3,10 +3,10 @@ import Card from '#components/UI/Card';
 import { formatDateTime } from '#utils/formatting.ts';
 import { DateTime } from 'luxon';
 
-type ErrorProps = {
+interface ErrorProps extends React.ComponentPropsWithoutRef<'div'> {
   error: string;
   onRetry?: () => void;
-};
+}
 
 const Error: React.FC<ErrorProps> = ({ error, onRetry }) => {
   const currentDateTime = new Date().toString();

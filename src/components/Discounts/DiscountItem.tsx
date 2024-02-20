@@ -4,9 +4,10 @@ import Card from '#components/UI/Card.tsx';
 import { TDetailDiscountInfo, TGetDiscountData } from '#types/Discount.ts';
 import { getCountryCodeFromTitle, formatDateTime } from '#utils/formatting.ts';
 
-interface DiscountItemProps extends TGetDiscountData {
-  onClick?: (detailDiscountInfo: TDetailDiscountInfo) => void;
-}
+type DiscountItemProps = React.HTMLAttributes<HTMLDivElement> &
+  TGetDiscountData & {
+    onClick?: (detailDiscountInfo: TDetailDiscountInfo) => void;
+  };
 
 type TStatusColor = 'gray' | 'green' | 'red';
 
