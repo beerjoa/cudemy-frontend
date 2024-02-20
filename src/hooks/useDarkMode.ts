@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { Theme } from '#types/hooks';
+import { Theme } from '#types/hooks.ts';
 
 const useDarkMode = () => {
   const [theme, setTheme] = useState<Theme>(
