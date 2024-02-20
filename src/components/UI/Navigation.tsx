@@ -1,3 +1,4 @@
+import Twemoji from '#components/UI/Twemoji';
 import DarkModeSwitcher from '../DarkModeSwitcher';
 import Button from './Button';
 
@@ -5,22 +6,27 @@ type NavigationProps = any;
 
 const Navigation: React.FC<NavigationProps> = () => {
   return (
-    <nav className="w-full rounded-lg bg-white dark:bg-gray-900 shadow mb-8 p-2 md:p-4 sticky top-0 z-50">
-      <div className="container mx-auto flex items-center justify-between">
-        <a
-          className="text-2xl font-bold text-gray-800 dark:text-gray-200"
-          href="#"
-        >
-          <img src="/fav.svg" alt="fav" className="h-8 w-8" />
-        </a>
-        <div className="flex space-x-8">
-          <Button className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
-            Discounts
-          </Button>
-          <DarkModeSwitcher />
-        </div>
+    <div className="navbar bg-base-200 w-full rounded-lg shadow mb-4 max-md:mb-2 max-md:p-0 p-2 sticky top-0 z-50 max-md:min-h-12">
+      <div className="flex-1">
+        <Button className="btn btn-square btn-md btn-ghost max-md:btn-sm ml-2">
+          <a className="link link-primary" href="#">
+            <Twemoji
+              className="fill-current"
+              emojiClassName="w-6 h-6 md:w-10 md:h-10"
+              emoji="📖"
+            />
+          </a>
+        </Button>
       </div>
-    </nav>
+      <div className="flex-none space-x-8 mr-2 max-md:space-x-2 max-md:mr-1">
+        <Button className="btn btn-error btn-md btn-ghost text-lg max-md:btn-sm max-md:text-md">
+          Discounts
+        </Button>
+      </div>
+      <div className="flex-none">
+        <DarkModeSwitcher />
+      </div>
+    </div>
   );
 };
 

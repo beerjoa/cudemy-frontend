@@ -1,9 +1,4 @@
-type ButtonProps = {
-  children?: React.ReactNode;
-  className?: string;
-  disabled?: boolean;
-  onClick?: () => void;
-};
+export type ButtonProps = React.HTMLAttributes<HTMLButtonElement>;
 
 const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
   return <button {...props}>{children}</button>;
