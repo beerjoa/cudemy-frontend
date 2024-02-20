@@ -1,14 +1,14 @@
-import { CudmAPI } from '#api/index';
+import { CudmAPI } from '#api/index.ts';
 
 import {
-  IGetDiscountData,
-  IGetDiscountByCountryCodeParams,
-} from '#types/Discount';
+  TGetDiscountData,
+  TGetDiscountByCountryCodeParams,
+} from '#types/Discount.ts';
 
 const getDiscountByCountryCode = async (
-  params: IGetDiscountByCountryCodeParams,
+  params: TGetDiscountByCountryCodeParams,
 ) => {
-  return CudmAPI.get<IGetDiscountData>('/udemy/discount-status', {
+  return CudmAPI.get<TGetDiscountData>('/udemy/discount-status', {
     params,
   });
 };

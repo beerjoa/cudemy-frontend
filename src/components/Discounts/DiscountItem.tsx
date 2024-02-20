@@ -1,23 +1,29 @@
-import Card from '#components/UI/Card';
+import { DateTime } from 'luxon';
 
-import { IGetDiscountData } from '#types/Discount';
-import { getCountryCodeFromTitle, formatDateTime } from '#utils/formatting';
+import Card from '#components/UI/Card.tsx';
+import { TDetailDiscountInfo, TGetDiscountData } from '#types/Discount.ts';
+import { getCountryCodeFromTitle, formatDateTime } from '#utils/formatting.ts';
 
-interface DiscountItemProps extends IGetDiscountData {
-  onClick?: () => void;
+interface DiscountItemProps extends TGetDiscountData {
+  onClick?: (detailDiscountInfo: TDetailDiscountInfo) => void;
 }
+
+type TStatusColor = 'gray' | 'green' | 'red';
 
 const DiscountItem: React.FC<DiscountItemProps> = ({
   title,
   description,
   updatedAt,
-  result: { discountStatus },
+  result: { discountStatus, startedAt, endedAt },
   onClick,
 }) => {
   const { countryCode, countryName, countryFlag } =
     getCountryCodeFromTitle(title);
-  let color = 'gray';
+  let color: TStatusColor = 'gray';
   let updatedDescription = description;
+
+  const formattedDateTime = formatDateTime(updatedAt, DateTime.DATETIME_FULL);
+
   let buttonLabel;
 
   if (discountStatus !== null) {
@@ -26,14 +32,30 @@ const DiscountItem: React.FC<DiscountItemProps> = ({
     buttonLabel = 'Check Status';
   }
 
+  const handleOnClickDetails = () => {
+    if (!onClick) return;
+
+    const detailDiscountInfo: TDetailDiscountInfo = {
+      countryCode,
+      countryName,
+      countryFlag,
+      description: updatedDescription,
+      updatedAt,
+      discountStatus,
+      startedAt,
+      endedAt,
+    };
+    onClick(detailDiscountInfo);
+  };
+
   return (
     <Card
       title={`${countryFlag} ${countryName} / ${countryCode}`}
       description={`📝 ${updatedDescription}`}
-      updatedAt={`⏰ ${formatDateTime(updatedAt)}`}
+      updatedAt={`⏰ ${formattedDateTime}`}
       color={color}
       buttonLabel={buttonLabel}
-      onClick={onClick}
+      onClick={handleOnClickDetails}
     />
   );
 };

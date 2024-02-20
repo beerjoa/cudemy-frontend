@@ -8,7 +8,12 @@ type TwemojiProps = {
 };
 
 const Twemoji: React.FC<TwemojiProps> = memo(
-  ({ className, emoji, emojiClassName = 'w-4 h-4', ...props }) => {
+  ({
+    className,
+    emoji,
+    emojiClassName = 'size-4 align-[-0.1em]',
+    ...props
+  }) => {
     const combinedClassName = `_twemoji ${className || ''}`;
     return (
       <span
