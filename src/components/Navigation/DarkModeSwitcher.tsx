@@ -1,6 +1,6 @@
-import Button, { ButtonProps } from '#components/UI/Button';
-import Twemoji from '#components/UI/Twemoji';
-import useDarkMode from '#hooks/useDarkMode';
+import Button, { ButtonProps } from '#components/UI/Button.tsx';
+import Twemoji from '#components/UI/Twemoji.tsx';
+import useDarkMode from '#hooks/useDarkMode.ts';
 
 type DarkModeSwitcherProps = ButtonProps;
 
@@ -16,21 +16,21 @@ const DarkModeSwitcher: React.FC<DarkModeSwitcherProps> = () => {
   };
 
   return (
-    <Button className="btn btn-square btn-ghost btn-md max-md:btn-sm mr-2">
+    <Button className="btn btn-square btn-ghost btn-lg max-md:btn-md mx-2">
       <label className="swap swap-rotate">
         <input
           type="checkbox"
           onChange={handleThemeChange}
-          checked={theme === 'light' ? false : true}
+          checked={theme === 'dark'}
         />
         <Twemoji
           className="swap-on fill-current"
-          emojiClassName="w-6 h-6 md:w-10 md:h-10"
+          emojiClassName="w-6 h-6 md:w-12 md:h-12"
           emoji="🌞"
         />
         <Twemoji
           className="swap-off fill-current"
-          emojiClassName="w-6 h-6 md:w-10 md:h-10"
+          emojiClassName="w-6 h-6 md:w-12 md:h-12"
           emoji="🌜"
         />
       </label>

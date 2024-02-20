@@ -6,8 +6,6 @@
 /* Custom CSS */
 @layer components {
   ._twemoji img {
-    margin: 0 .05em 0 .1em;
-    vertical-align: -0.1em;
     display: inline;
   }
 }

@@ -1,6 +1,6 @@
-import Navigation from './components/UI/Navigation';
-import Home from './components/Home';
-import Footer from '#components/UI/Footer';
+import Navigation from '#components/Navigation/index.tsx';
+import Home from '#components/Home.tsx';
+import Footer from '#components/UI/Footer.tsx';
 
 function App() {
   return (
