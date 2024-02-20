@@ -1,9 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import discountReducer from './discount-slice';
+
+import discountReducer from './discount-slice.ts';
+import modalUIReducer from './modal-ui-slice.ts';
+import navigationUIReducer from './navigation-ui-slice.ts';
 
 const store = configureStore({
   reducer: {
     discount: discountReducer,
+    modalUI: modalUIReducer,
+    navigationUI: navigationUIReducer,
   },
 });
 

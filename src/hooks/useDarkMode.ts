@@ -1,22 +1,24 @@
 import { useState, useEffect } from 'react';
 
-type Theme = 'light' | 'dark';
+import { Theme } from '#types/hooks.ts';
 
 const useDarkMode = () => {
   const [theme, setTheme] = useState<Theme>(
-    localStorage.getItem('theme') as Theme,
+    localStorage.getItem('theme')
+      ? (localStorage.getItem('theme') as Theme)
+      : 'light',
   );
-  const colorTheme: Theme = theme === 'dark' ? 'light' : 'dark';
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    if (colorTheme) root.classList.remove(colorTheme);
-    if (theme) root.classList.add(theme);
+    localStorage.setItem('theme', theme);
+    const localTheme = localStorage.getItem('theme') as Theme;
 
-    if (theme) localStorage.setItem('theme', theme);
-  }, [theme, colorTheme]);
+    document
+      .querySelector<HTMLElement>('html')!
+      .setAttribute('data-theme', localTheme);
+  }, [theme]);
 
-  return [colorTheme, setTheme] as const;
+  return [theme, setTheme] as const;
 };
 
 export default useDarkMode;

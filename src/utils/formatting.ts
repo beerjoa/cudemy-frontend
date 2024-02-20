@@ -1,7 +1,36 @@
+import { DateTime } from 'luxon';
+
 const COUNTRIES: any = {
   US: 'United States',
   CA: 'Canada',
   KR: 'South Korea',
+};
+
+const HOUR_EMOJIS: any = {
+  0: '🕛',
+  1: '🕐',
+  2: '🕑',
+  3: '🕒',
+  4: '🕓',
+  5: '🕔',
+  6: '🕕',
+  7: '🕖',
+  8: '🕗',
+  9: '🕘',
+  10: '🕙',
+  11: '🕚',
+};
+HOUR_EMOJIS;
+
+const COUNTRIES_TIMEZONES: any = {
+  US: [
+    'America/New_York',
+    'America/Chicago',
+    'America/Denver',
+    'America/Los_Angeles',
+  ],
+  CA: ['America/Toronto', 'America/Vancouver'],
+  KR: ['Asia/Seoul'],
 };
 
 export const getFlagEmojiFromCountryCode = (countryCode: string) => {
@@ -21,20 +50,25 @@ export const getCountryCodeFromTitle = (title: string) => {
   };
 };
 
-export const formatDateTime = (date: string, timeZone = 'UTC') => {
+export const getCountryTimeZones = (countryCode: string) => {
+  return COUNTRIES_TIMEZONES[countryCode];
+};
+
+export const formatDateTime = (
+  date: string,
+  format: Intl.DateTimeFormatOptions = DateTime.DATE_SHORT,
+) => {
   if (date === '') {
     return '-';
   }
 
-  const options: Intl.DateTimeFormatOptions = {
-    timeZone: timeZone,
-    timeZoneName: 'short',
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-  };
-  return new Date(date).toLocaleDateString('en-US', options);
+  const formattedDate = DateTime.fromISO(date).toLocaleString(format);
+
+  return formattedDate;
+};
+
+export const getAgoTime = (date: string) => {
+  const endedAt = DateTime.fromISO(date);
+
+  return endedAt.toRelative();
 };

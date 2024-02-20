@@ -1,15 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import DiscountAPI from '#api/discount-api';
-import { IGetDiscountData } from '#types/Discount';
+import DiscountAPI from '#api/discount-api.ts';
+import { TGetDiscountData } from '#types/Discount.ts';
 
-const initialDiscountResultState: Array<IGetDiscountData> = [
+const initialDiscountResultState: Array<TGetDiscountData> = [
   {
     title: 'checkDiscountStatus-CA-1707516000019',
     description: 'Not supported region yet.',
     updatedAt: '',
     result: {
       discountStatus: null,
+      startedAt: '',
+      endedAt: '',
     },
   },
   {
@@ -18,12 +20,14 @@ const initialDiscountResultState: Array<IGetDiscountData> = [
     updatedAt: '',
     result: {
       discountStatus: null,
+      startedAt: '',
+      endedAt: '',
     },
   },
 ];
 
 interface DiscountState {
-  discountData: Array<IGetDiscountData>;
+  discountData: Array<TGetDiscountData>;
   loading: boolean;
   error: string | null;
 }

@@ -1,31 +1,14 @@
-import Button from '#components/UI/Button';
-import Twemoji from '#components/UI/Twemoji';
+import Button from '#components/UI/Button.tsx';
+import Ping from '#components/UI/Ping.tsx';
+import Twemoji from '#components/UI/Twemoji.tsx';
 
 type CardProps = {
   title: string;
   description: string;
   updatedAt: string;
-  color: string;
+  color: 'gray' | 'green' | 'red';
   buttonLabel?: string;
   onClick?: () => void;
-};
-
-const colorVariants: any = {
-  gray: {
-    itemClass: 'bg-gray-200 dark:bg-gray-700 hover:scale-95',
-    buttonClass:
-      'bg-gray-500 hover:bg-gray-600 focus:shadow-outline focus:outline-none',
-  },
-  green: {
-    itemClass: 'bg-green-200 dark:bg-green-700 hover:scale-105',
-    buttonClass:
-      'bg-green-500 hover:bg-green-600 focus:shadow-outline focus:outline-none',
-  },
-  red: {
-    itemClass: 'bg-red-200 dark:bg-red-700 hover:scale-105',
-    buttonClass:
-      'bg-red-500 hover:bg-red-600 focus:shadow-outline focus:outline-none',
-  },
 };
 
 const Card: React.FC<CardProps> = ({
@@ -36,31 +19,38 @@ const Card: React.FC<CardProps> = ({
   buttonLabel,
   onClick,
 }) => {
-  const { itemClass, buttonClass } = colorVariants[color];
+  const itemClass = color === 'gray' ? 'hover:scale-95' : 'hover:scale-105';
 
-  const combinedItemClass = `w-full max-w-sm rounded-md overflow-hidden shadow-lg p-6 transform transition-transform duration-500 ${itemClass}`;
-  const combinedButtonClass = `w-full inline-flex items-center justify-center h-8 px-4 font-medium tracking-wide text-white transition duration-200 rounded shadow-md ${buttonClass}`;
+  const combinedItemClass = `card w-full max-w-sm outline outline-1 outline-base-content/20 bg-base-300 text-base-content overflow-hidden shadow-lg transform transition-transform duration-500 ${itemClass}`;
+  const combinedButtonClass = `btn btn-sm md:text-[1.1em] text-md w-full rounded-lg inline-flex items-center justify-center tracking-wide rounded shadow-md btn-primary text-primary-content focus:shadow-outline focus:outline-none transform transition duration-200`;
 
   return (
     <div className={combinedItemClass}>
-      <h2 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-200 rounded h-8">
-        <Twemoji emoji={title} />
-      </h2>
-      <div className="text-gray-700 dark:text-gray-300 text-base mb-2 rounded">
-        <p className="h-16 mb-2">
-          <Twemoji className="line-clamp-3" emoji={description} />
-        </p>
-        <time className="h-8">
-          <Twemoji emoji={updatedAt} />
-        </time>
+      <div className="card-body [--padding-card:24px]">
+        <div className="card-title mb-2">
+          <h2 className="text-xl font-bold rounded">
+            <Twemoji emoji={title} emojiClassName="size-5 align-[-3px]" />
+          </h2>
+          <Ping color={color} />
+        </div>
+        <div className="mb-2 rounded-lg">
+          <p className="h-20">
+            <Twemoji className="line-clamp-3" emoji={description} />
+          </p>
+          <time className="">
+            <Twemoji emoji={updatedAt} />
+          </time>
+        </div>
+        <div className="card-action">
+          <Button
+            className={combinedButtonClass}
+            disabled={!buttonLabel}
+            onClick={onClick}
+          >
+            {buttonLabel || '-'}
+          </Button>
+        </div>
       </div>
-      <Button
-        className={combinedButtonClass}
-        disabled={!buttonLabel}
-        onClick={onClick}
-      >
-        {buttonLabel || '-'}
-      </Button>
     </div>
   );
 };
