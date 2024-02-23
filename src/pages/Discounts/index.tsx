@@ -1,7 +1,6 @@
-import Twemoji from '#components/UI/Twemoji';
-
-import DiscountDetail from './DiscountDetail.tsx';
+import DiscountDetail from './DiscountItemDetail.tsx';
 import DiscountsList from './DiscountsList.tsx';
+import DiscountIcon from '#assets/icons/discount.svg';
 
 interface DiscountsProps extends React.ComponentPropsWithoutRef<'div'> {}
 
@@ -13,10 +12,10 @@ const Discounts: React.FC<DiscountsProps> = () => {
         <div className="hero-content text-center min-w-96">
           <div className="max-w-xl ">
             <div className="mb-4 max-md:mb-2">
-              <Twemoji
-                className="fill-current w-16 h-16 md:w-24 md:h-24"
-                emojiClassName="w-16 h-16 md:w-24 md:h-24"
-                emoji="🏷️"
+              <img
+                src={DiscountIcon}
+                alt="hand-shake-icon"
+                className="size-16 md:size-24 mx-auto mb-2 md:mb-4"
               />
             </div>
             <h1 className="text-5xl max-md:text-3xl font-bold mb-2 max-md:mb-1">

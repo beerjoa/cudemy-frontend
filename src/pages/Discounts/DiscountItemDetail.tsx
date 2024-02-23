@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { DateTime } from 'luxon';
 
 import Modal from '#components/UI/Modal.tsx';
-import Button from '#components/UI/Button.tsx';
 import Twemoji from '#components/UI/Twemoji.tsx';
 import { AppDispatch, RootState } from '#store/index.ts';
 import { modalUIActions } from '#store/modal-ui-slice.ts';
@@ -68,9 +67,9 @@ const DiscountDetail: React.FC<DiscountDetailProps> = () => {
               />
             </h2>
             <form method="dialog">
-              <Button className="btn-circle md:btn-lg btn-md md:text-2xl text-lg absolute md:right-3 md:top-3 right-1 top-1 focus:outline-none focus:shadow-none">
+              <button className="btn btn-ghost btn-circle md:btn-lg btn-md md:text-2xl text-lg absolute md:right-3 md:top-3 right-1 top-1 focus:outline-none focus:shadow-none">
                 ✕
-              </Button>
+              </button>
             </form>
           </div>
         </div>
@@ -91,7 +90,7 @@ const DiscountDetail: React.FC<DiscountDetailProps> = () => {
         </div>
         <div className="modal-action mt-3 md:mt-5">
           <form method="dialog" className="w-full">
-            <Button className="btn btn-primary w-full btn-md md:btn-lg md:text-xl text-md md:h-[3.25rem] md:min-h-[3.25rem] h-[2.5rem] min-h-[2.5rem] mb-0.5 md:mb-1 rounded-lg">
+            <button className="btn btn-primary w-full btn-md md:btn-lg md:text-xl text-md md:h-[3.25rem] md:min-h-[3.25rem] h-[2.5rem] min-h-[2.5rem] mb-0.5 md:mb-1 rounded-lg">
               <a
                 className="w-full h-full flex items-center justify-center"
                 href={'https://www.udemy.com'}
@@ -100,7 +99,7 @@ const DiscountDetail: React.FC<DiscountDetailProps> = () => {
               >
                 Go to Udemy
               </a>
-            </Button>
+            </button>
             <p className="text-[0.8em] md:text-[1.05em] text-gray-500 text-center">
               Udemy regions would be based on your location.
             </p>

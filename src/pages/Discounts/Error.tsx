@@ -1,4 +1,4 @@
-import Card from '#components/UI/Card';
+import Card from '#pages/Discounts/DiscountItemCard';
 
 import { formatDateTime } from '#utils/formatting.ts';
 import { DateTime } from 'luxon';

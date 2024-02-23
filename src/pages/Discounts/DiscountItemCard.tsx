@@ -1,7 +1,6 @@
-import Button from '#components/UI/Button.tsx';
 import Ping from '#components/UI/Ping.tsx';
 import Twemoji from '#components/UI/Twemoji.tsx';
-interface CardProps extends React.ComponentPropsWithoutRef<typeof Button> {
+interface CardProps extends React.ComponentPropsWithoutRef<'button'> {
   title: string;
   description: string;
   updatedAt: string;
@@ -40,14 +39,14 @@ const Card: React.FC<CardProps> = ({
             <Twemoji emoji={updatedAt} />
           </time>
         </div>
-        <div className="card-action">
-          <Button
+        <div className="card-actions">
+          <button
             className={combinedButtonClass}
             disabled={!buttonLabel}
             onClick={onOpenDetail}
           >
             {buttonLabel || '-'}
-          </Button>
+          </button>
         </div>
       </div>
     </div>

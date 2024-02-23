@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
 
-import Card from '#components/UI/Card.tsx';
+import Card from '#pages/Discounts/DiscountItemCard';
 import {
   TDetailDiscountInfo,
   TGetDiscountDataResult,

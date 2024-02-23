@@ -1,9 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import Button from '#components/UI/Button.tsx';
 import Twemoji from '#components/UI/Twemoji.tsx';
-import MenuDropdown from '#components/Navigation/MenuDropdown.tsx';
-import { AppDispatch, RootState } from '#store/index.ts';
+import MenuDropdown from '#layouts/Navigation/MenuDropdown';
+import { RootState } from '#store/index.ts';
 import DarkModeSwitcher from './DarkModeSwitcher';
 import { Link } from 'react-router-dom';
 import { TNavigationMenu } from '#types/UI';
@@ -23,13 +22,13 @@ const Navigation: React.FC<NavigationProps> = () => {
           <MenuDropdown menus={menus} />
         </div>
         <Link to="/">
-          <Button className="btn-square btn-lg max-md:btn-md mx-2">
+          <button className="btn btn-ghost btn-square btn-lg max-md:btn-md mx-2">
             <Twemoji
               className="fill-current"
               emojiClassName="w-8 h-8 md:w-12 md:h-12"
               emoji="📖"
             />
-          </Button>
+          </button>
         </Link>
       </div>
       <div className="flex-none space-x-8 max-md:space-x-2 max-md:mr-1 px-1">

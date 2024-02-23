@@ -5,6 +5,12 @@
       "#components/*": [
         "components/*"
       ],
+      "#pages/*": [
+        "pages/*"
+      ],
+      "#layouts/*": [
+        "layouts/*"
+      ],
       "#hooks/*": [
         "hooks/*"
       ],
