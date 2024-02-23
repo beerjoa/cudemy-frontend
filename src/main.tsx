@@ -5,16 +5,23 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import store from '#store/index.ts';
 
 import './index.css';
-import RootLayout from './RootLayout.tsx';
-import Home from '#components/Home/index.tsx';
-import Discounts from '#components/Discounts';
+import AppLayout from './AppLayout.tsx';
+import Home from '#pages/Home/index.tsx';
+import Discounts from '#pages/Discounts/index.tsx';
+import NotFound404 from '#pages/NotFound404.tsx';
+import App from './App.tsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <RootLayout />,
+    element: <App />,
+    errorElement: (
+      <AppLayout>
+        <NotFound404 />
+      </AppLayout>
+    ),
     children: [
-      { path: '/', element: <Home /> },
+      { index: true, element: <Home /> },
       { path: '/discounts', element: <Discounts /> },
     ],
   },
