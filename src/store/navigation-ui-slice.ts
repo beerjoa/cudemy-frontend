@@ -9,7 +9,7 @@ const initialState: TNavigationState = {
       path: '/',
       icon: '🏠',
     },
-    { label: ENavigationMenu.DISCOUNTS, path: '/discounts', icon: '💰' },
+    { label: ENavigationMenu.DISCOUNTS, path: '/discounts', icon: '🏷️' },
   ],
   currentMenu: ENavigationMenu.HOME,
   isMenuOpen: false,

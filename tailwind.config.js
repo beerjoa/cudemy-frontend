@@ -1,10 +1,23 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /*eslint-env node*/
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
+const pgDaisyUI = require('daisyui');
+const pgRotate = plugin(({ addUtilities, theme, variants }) => {
+  addUtilities({
+    '.rotate-x': {
+      transform: 'rotateX(180deg)',
+    },
+    '.rotate-y': {
+      transform: 'rotateY(180deg)',
+    },
+  });
+});
+
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   darkMode: ['class', '[data-theme="dark"]'],
-  plugins: [require('daisyui')],
+  plugins: [pgDaisyUI, pgRotate],
   theme: {
     extend: {},
     screens: {

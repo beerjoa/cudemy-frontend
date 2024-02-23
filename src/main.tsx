@@ -6,7 +6,7 @@ import store from '#store/index.ts';
 
 import './index.css';
 import RootLayout from './RootLayout.tsx';
-import Home from '#components/Home.tsx';
+import Home from '#components/Home/index.tsx';
 import Discounts from '#components/Discounts';
 
 const router = createBrowserRouter([

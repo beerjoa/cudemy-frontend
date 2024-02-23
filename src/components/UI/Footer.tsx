@@ -3,7 +3,7 @@ interface FooterProps extends React.ComponentPropsWithoutRef<'footer'> {}
 const Footer: React.FC<FooterProps> = () => {
   return (
     <footer
-      className="footer footer-center p-4 max-md:p-2 bg-base-200 text-base-content text-lg max-md:text-sm rounded-lg w-full shadow mb-2 mt-auto"
+      className="footer footer-center p-4 shadow-lg max-md:p-2 bg-base-200 text-base-content text-lg max-md:text-sm rounded-lg w-full shadow mb-2 mt-auto outline outline-1 outline-base-content/20"
       role="footer"
     >
       <aside>

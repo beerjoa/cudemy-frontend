@@ -51,7 +51,7 @@ const DiscountsList: React.FC<DiscountsListProps> = () => {
                   description={discount.description}
                   updatedAt={discount.updatedAt}
                   result={discount.result}
-                  onClick={handleClick}
+                  onOpenDetail={handleClick}
                 />
               ))
             : null}

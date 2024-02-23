@@ -18,7 +18,7 @@ const Error: React.FC<ErrorProps> = ({ error, onRetry }) => {
       updatedAt={`⏰ ${formatDateTime(currentDateTime, DateTime.TIME_WITH_SHORT_OFFSET)}`}
       color="red"
       buttonLabel="Retry"
-      onClick={onRetry}
+      onOpenDetail={onRetry}
     />
   );
 };
