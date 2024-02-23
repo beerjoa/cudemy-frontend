@@ -68,9 +68,9 @@ const DiscountDetail: React.FC<DiscountDetailProps> = () => {
               />
             </h2>
             <form method="dialog">
-              <button className="btn md:btn-lg btn-md btn-circle btn-ghost md:text-2xl text-lg absolute md:right-3 md:top-3 right-1 top-1 focus:outline-none focus:shadow-none">
+              <Button className="btn-circle md:btn-lg btn-md md:text-2xl text-lg absolute md:right-3 md:top-3 right-1 top-1 focus:outline-none focus:shadow-none">
                 ✕
-              </button>
+              </Button>
             </form>
           </div>
         </div>

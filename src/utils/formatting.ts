@@ -41,13 +41,25 @@ export const getFlagEmojiFromCountryCode = (countryCode: string) => {
   return String.fromCodePoint(...codePoints);
 };
 
-export const getCountryCodeFromTitle = (title: string) => {
+export const getCountryCodeFromTitle = (title: string = '') => {
+  let result = {
+    countryCode: '',
+    countryName: '',
+    countryFlag: '',
+  };
+
+  if (title === '') {
+    return result;
+  }
+
   const formattedCountryCode = title.split('-')[1].toUpperCase();
-  return {
+  result = {
     countryCode: formattedCountryCode,
     countryName: COUNTRIES[formattedCountryCode],
     countryFlag: getFlagEmojiFromCountryCode(formattedCountryCode),
   };
+
+  return result;
 };
 
 export const getCountryTimeZones = (countryCode: string) => {

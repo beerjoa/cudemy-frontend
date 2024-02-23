@@ -3,7 +3,12 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
 }
 
 const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
-  return <button {...props}>{children}</button>;
+  const rootButtonClass = 'btn btn-ghost';
+  return (
+    <button className={rootButtonClass} {...props}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

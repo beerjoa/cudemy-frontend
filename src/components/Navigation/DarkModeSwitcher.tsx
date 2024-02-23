@@ -17,7 +17,7 @@ const DarkModeSwitcher: React.FC<DarkModeSwitcherProps> = () => {
   };
 
   return (
-    <Button className="btn btn-square btn-ghost btn-lg max-md:btn-md mx-2">
+    <Button className="btn-square btn-lg max-md:btn-md mx-2">
       <label className="swap swap-rotate">
         <input
           type="checkbox"

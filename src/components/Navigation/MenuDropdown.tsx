@@ -1,8 +1,8 @@
-import Button from '#components/UI/Button.tsx';
-import { ENavigationMenu } from '#types/UI.ts';
+import { TNavigationMenu } from '#types/UI.ts';
+import { Link } from 'react-router-dom';
 
 interface MenuDropdownProps extends React.ComponentPropsWithoutRef<'div'> {
-  menus: ENavigationMenu[];
+  menus: TNavigationMenu[];
 }
 
 const MenuDropdown: React.FC<MenuDropdownProps> = ({ menus }) => {
@@ -23,17 +23,19 @@ const MenuDropdown: React.FC<MenuDropdownProps> = ({ menus }) => {
       </div>
       <ul
         tabIndex={0}
-        className="menu dropdown-content mx-[1px] mt-4 w-[calc((100vw)-1.1rem)] z-[1] p-2 shadow-xl bg-base-200 rounded-lg outline outline-1 outline-base-300 transform transition-transform duration-500"
+        className="menu dropdown-content mt-4 w-[calc((100vw)-1rem)] z-[1] p-2 shadow-xl bg-base-200 rounded-lg outline outline-1 outline-base-content/20 transform transition-transform duration-500"
       >
-        {menus.map((menu: any, index: number) => (
-          <Button
+        {menus.map((menu: TNavigationMenu, index: number) => (
+          <Link
+            to={menu.path}
             key={index}
             className="btn btn-ghost btn-md font-medium text-xl my-1 hover:bg-accent hover:text-accent-content"
+            role="button"
           >
-            {menu}
-          </Button>
+            {menu.label}
+          </Link>
         ))}
-        <div className="divider divider-base-content/30 mx-[33%] my-2"></div>
+        <div className="divider divider-base-content/40 mx-[33%] my-1"></div>
       </ul>
     </div>
   );
