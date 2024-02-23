@@ -1,12 +1,12 @@
-import Card from '#components/UI/Card';
+import Card from '#pages/Discounts/DiscountItemCard';
 
 import { formatDateTime } from '#utils/formatting.ts';
 import { DateTime } from 'luxon';
 
-type ErrorProps = {
+interface ErrorProps extends React.ComponentPropsWithoutRef<'div'> {
   error: string;
   onRetry?: () => void;
-};
+}
 
 const Error: React.FC<ErrorProps> = ({ error, onRetry }) => {
   const currentDateTime = new Date().toString();
@@ -18,7 +18,7 @@ const Error: React.FC<ErrorProps> = ({ error, onRetry }) => {
       updatedAt={`⏰ ${formatDateTime(currentDateTime, DateTime.TIME_WITH_SHORT_OFFSET)}`}
       color="red"
       buttonLabel="Retry"
-      onClick={onRetry}
+      onOpenDetail={onRetry}
     />
   );
 };
