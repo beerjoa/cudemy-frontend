@@ -3,7 +3,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import { ENavigationMenu, TNavigationState } from '#types/UI.ts';
 
 const initialState: TNavigationState = {
-  menus: [ENavigationMenu.HOME, ENavigationMenu.DISCOUNTS],
+  menus: [
+    {
+      label: ENavigationMenu.HOME,
+      path: '/',
+      icon: '🏠',
+    },
+    { label: ENavigationMenu.DISCOUNTS, path: '/discounts', icon: '🏷️' },
+  ],
   currentMenu: ENavigationMenu.HOME,
   isMenuOpen: false,
 };

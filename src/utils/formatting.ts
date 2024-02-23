@@ -41,13 +41,25 @@ export const getFlagEmojiFromCountryCode = (countryCode: string) => {
   return String.fromCodePoint(...codePoints);
 };
 
-export const getCountryCodeFromTitle = (title: string) => {
+export const getCountryCodeFromTitle = (title: string = '') => {
+  let result = {
+    countryCode: '',
+    countryName: '',
+    countryFlag: '',
+  };
+
+  if (title === '') {
+    return result;
+  }
+
   const formattedCountryCode = title.split('-')[1].toUpperCase();
-  return {
+  result = {
     countryCode: formattedCountryCode,
     countryName: COUNTRIES[formattedCountryCode],
     countryFlag: getFlagEmojiFromCountryCode(formattedCountryCode),
   };
+
+  return result;
 };
 
 export const getCountryTimeZones = (countryCode: string) => {
@@ -62,13 +74,17 @@ export const formatDateTime = (
     return '-';
   }
 
-  const formattedDate = DateTime.fromISO(date).toLocaleString(format);
+  const formattedDate = DateTime.fromISO(date).toLocaleString(format, {
+    locale: 'en-US',
+  });
 
   return formattedDate;
 };
 
 export const getAgoTime = (date: string) => {
-  const endedAt = DateTime.fromISO(date);
+  const endedAt = DateTime.fromISO(date, {
+    locale: 'en-US',
+  });
 
   return endedAt.toRelative();
 };

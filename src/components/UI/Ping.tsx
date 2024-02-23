@@ -1,6 +1,6 @@
-type PingProps = React.HTMLAttributes<HTMLSpanElement> & {
+interface PingProps extends React.ComponentPropsWithoutRef<'span'> {
   color?: 'red' | 'green' | 'gray';
-};
+}
 
 const Ping: React.FC<PingProps> = (props) => {
   let content = (

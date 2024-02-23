@@ -11,6 +11,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '#components': '/src/components',
+      '#pages': '/src/pages',
+      '#layouts': '/src/layouts',
       '#hooks': '/src/hooks',
       '#store': '/src/store',
       '#api': '/src/api',

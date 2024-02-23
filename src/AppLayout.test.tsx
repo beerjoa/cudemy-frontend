@@ -3,16 +3,16 @@ import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import store from '#store/index.ts';
 
-import App from './App.tsx';
+import AppLayout from './AppLayout.tsx';
 import { BrowserRouter } from 'react-router-dom';
 
-describe('App', () => {
-  it('Renders App', () => {
+describe('AppLayout', () => {
+  it('Renders AppLayout', () => {
     // Arrange
     render(
       <Provider store={store}>
         <BrowserRouter>
-          <App />
+          <AppLayout />
         </BrowserRouter>
       </Provider>,
     );
@@ -20,5 +20,7 @@ describe('App', () => {
 
     // Expect
     expect(screen.getByRole('navigation')).toBeInTheDocument();
+    expect(screen.getByRole('main')).toBeInTheDocument();
+    expect(screen.getByRole('footer')).toBeInTheDocument();
   });
 });

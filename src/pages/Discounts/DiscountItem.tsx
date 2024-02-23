@@ -1,11 +1,18 @@
 import { DateTime } from 'luxon';
 
-import Card from '#components/UI/Card.tsx';
-import { TDetailDiscountInfo, TGetDiscountData } from '#types/Discount.ts';
+import Card from '#pages/Discounts/DiscountItemCard';
+import {
+  TDetailDiscountInfo,
+  TGetDiscountDataResult,
+} from '#types/Discount.ts';
 import { getCountryCodeFromTitle, formatDateTime } from '#utils/formatting.ts';
 
-interface DiscountItemProps extends TGetDiscountData {
-  onClick?: (detailDiscountInfo: TDetailDiscountInfo) => void;
+interface DiscountItemProps extends React.ComponentPropsWithoutRef<'div'> {
+  title: string;
+  description: string;
+  updatedAt: string;
+  result: TGetDiscountDataResult;
+  onOpenDetail: (detailDiscountInfo: TDetailDiscountInfo) => void;
 }
 
 type TStatusColor = 'gray' | 'green' | 'red';
@@ -15,7 +22,7 @@ const DiscountItem: React.FC<DiscountItemProps> = ({
   description,
   updatedAt,
   result: { discountStatus, startedAt, endedAt },
-  onClick,
+  onOpenDetail,
 }) => {
   const { countryCode, countryName, countryFlag } =
     getCountryCodeFromTitle(title);
@@ -33,7 +40,7 @@ const DiscountItem: React.FC<DiscountItemProps> = ({
   }
 
   const handleOnClickDetails = () => {
-    if (!onClick) return;
+    if (!onOpenDetail) return;
 
     const detailDiscountInfo: TDetailDiscountInfo = {
       countryCode,
@@ -45,7 +52,7 @@ const DiscountItem: React.FC<DiscountItemProps> = ({
       startedAt,
       endedAt,
     };
-    onClick(detailDiscountInfo);
+    onOpenDetail(detailDiscountInfo);
   };
 
   return (
@@ -55,7 +62,7 @@ const DiscountItem: React.FC<DiscountItemProps> = ({
       updatedAt={`⏰ ${formattedDateTime}`}
       color={color}
       buttonLabel={buttonLabel}
-      onClick={handleOnClickDetails}
+      onOpenDetail={handleOnClickDetails}
     />
   );
 };

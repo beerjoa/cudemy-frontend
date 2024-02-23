@@ -31,6 +31,7 @@
   "exclude": [
     "node_modules",
     "**/*Old.tsx",
+    "*Old.tsx"
   ],
   "extends": "./tsconfig.paths.json",
   "references": [

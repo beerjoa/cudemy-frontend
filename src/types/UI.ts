@@ -20,8 +20,14 @@ export enum ENavigationMenu {
   ABOUT = 'About',
 }
 
+export type TNavigationMenu = {
+  label: string;
+  path: string;
+  icon: string;
+};
+
 export type TNavigationState = {
-  menus: ENavigationMenu[];
+  menus: TNavigationMenu[];
   currentMenu: ENavigationMenu;
   isMenuOpen: boolean;
 };
